@@ -1,6 +1,6 @@
 <p align="center">
   <img width="180" src="./assets/images/logo.jpg" alt="Breakdance Migrator">
-  <h1 align="center">Breakdance Migrator</h1>
+  <h1 align="center">Breakdance Migrator [Not ready yet]</h1>
   <p align="center">Breakdance Migrator is a WordPress plugin designed to facilitate the migration of Breakdance Builder content from a staging site to a production site.</p>
 </p>
 
