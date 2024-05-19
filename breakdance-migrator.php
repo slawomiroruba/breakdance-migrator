@@ -20,6 +20,17 @@ define('BD_MIGRATOR_URL', plugin_dir_url(__FILE__));
 require_once BD_MIGRATOR_PATH . 'includes/export-functions.php';
 require_once BD_MIGRATOR_PATH . 'includes/display-functions.php';
 
+// Dodanie nowego linku "Migracja" do listy akcji wtyczki
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'add_migration_link');
+
+function add_migration_link($links)
+{
+    $migration_link = '<a href="' . admin_url('admin.php?page=breakdance_migrator') . '">Migracja</a>';
+    array_unshift($links, $migration_link); // Dodaj nowy link na początku listy
+    return $links;
+}
+
+
 // Register custom menu page
 add_action('admin_menu', 'register_bd_migrator_menu_page', 100);
 
