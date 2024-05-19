@@ -1,14 +1,20 @@
-# Breakdance Migrator
+<p align="center">
+  <img width="180" src="./assets/logo.jpg" alt="Breakdance Migrator">
+  <h1 align="center">Breakdance Migrator</h1>
+  <p align="center">Breakdance Migrator is a WordPress plugin designed to facilitate the migration of Breakdance Builder content from a staging site to a production site.</p>
+</p>
 
-![Breakdance Migrator Logo](https://via.placeholder.com/150) <!-- Zmień link na odpowiedni do Twojego logo -->
-
-**Breakdance Migrator**  
-Breakdance Migrator is a WordPress plugin designed to facilitate the migration of Breakdance Builder content from a staging site to a production site.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) 
-![Version](https://img.shields.io/badge/version-1.0-brightgreen.svg) 
-![Downloads](https://img.shields.io/github/downloads/slawomiroruba/breakdance-migrator/total.svg) 
-![Contributors](https://img.shields.io/github/contributors/slawomiroruba/breakdance-migrator.svg)
+![Version](https://img.shields.io/badge/version-1.0-brightgreen.svg)
+[![English badge](https://img.shields.io/badge/%E8%8B%B1%E6%96%87-English-blue)](./README.md)
+
+<a href="https://www.buymeacoffee.com/slawomiroruba"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=slawomiroruba&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
+
+
+## Roadmap link 
+
+[🛣️ Roadmap](https://github.com/users/slawomiroruba/projects/2/views/4)
 
 ## Features
 
@@ -61,7 +67,7 @@ We welcome contributions from the community to help improve Breakdance Migrator.
 5. **Spread the Word**: Share Breakdance Migrator with your network and help us grow our community.
 
 
-or support us by buying a coffee ☕️
+or support us by buying a coffee ☕️ <br>
 <a href="https://www.buymeacoffee.com/slawomiroruba"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=slawomiroruba&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 ## License
