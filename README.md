@@ -7,14 +7,11 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) 
 ![Version](https://img.shields.io/badge/version-1.0-brightgreen.svg)
+<!-- Roadmap -->
+[![Roadmap](https://img.shields.io/badge/roadmap-🛣️-blue)](https://github.com/users/slawomiroruba/projects/2/views/4)
 [![English badge](https://img.shields.io/badge/%E8%8B%B1%E6%96%87-English-blue)](./README.md)
 
 <a href="https://www.buymeacoffee.com/slawomiroruba"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=slawomiroruba&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
-
-
-## Roadmap link 
-
-[🛣️ Roadmap](https://github.com/users/slawomiroruba/projects/2/views/4)
 
 ## Features
 
@@ -38,24 +35,6 @@
 3. Click the 'Export Data' button.
 4. Download the exported JSON file or view it directly in your browser.
 
-## Roadmap
-
-### Completed
-
-- Initial release with the ability to export and import Breakdance-related data.
-- Added compression of JSON files using gzip.
-- Interactive admin interface with AJAX support for data export.
-- Support for exporting posts, postmeta, options, icons, and icon sets.
-
-### Planned
-
-- **Import Functionality**: Develop a seamless import mechanism to synchronize data between staging and production sites.
-- **Selective Export**: Allow users to select specific post types or date ranges for export.
-- **Advanced Filtering**: Provide more advanced filtering options to customize the export process.
-- **Backup and Restore**: Integrate backup and restore functionality to protect against data loss during migration.
-- **Multisite Support**: Extend support for WordPress multisite installations.
-- **Performance Optimization**: Further optimize the export and import processes for large datasets.
-
 ## Contribution
 
 We welcome contributions from the community to help improve Breakdance Migrator. Here's how you can get involved:
@@ -67,7 +46,7 @@ We welcome contributions from the community to help improve Breakdance Migrator.
 5. **Spread the Word**: Share Breakdance Migrator with your network and help us grow our community.
 
 
-or support us by buying a coffee ☕️ <br>
+or support me by buying a coffee ☕️ <br><br>
 <a href="https://www.buymeacoffee.com/slawomiroruba"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=slawomiroruba&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 ## License
