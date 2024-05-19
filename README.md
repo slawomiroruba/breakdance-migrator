@@ -1,6 +1,14 @@
 # Breakdance Migrator
 
-Breakdance Migrator is a WordPress plugin designed to facilitate the migration of Breakdance Builder content from a staging site to a production site. The primary challenge it addresses is the difficulty of deploying visual changes made in Breakdance Builder while new posts are added and existing ones are modified on the production site.
+![Breakdance Migrator Logo](https://via.placeholder.com/150) <!-- Zmień link na odpowiedni do Twojego logo -->
+
+**Breakdance Migrator**  
+Breakdance Migrator is a WordPress plugin designed to facilitate the migration of Breakdance Builder content from a staging site to a production site.
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg) 
+![Version](https://img.shields.io/badge/version-1.0-brightgreen.svg) 
+![Downloads](https://img.shields.io/github/downloads/slawomiroruba/breakdance-migrator/total.svg) 
+![Contributors](https://img.shields.io/github/contributors/slawomiroruba/breakdance-migrator.svg)
 
 ## Features
 
