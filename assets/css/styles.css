@@ -1,0 +1,48 @@
+.wrap {
+  max-width: 600px;
+  margin-right: auto;
+}
+
+.bd-migrator-form {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccd0d4;
+  border-radius: 5px;
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ccd0d4;
+  background: #f9f9f9;
+}
+
+.form-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccd0d4;
+}
+
+.submit {
+  text-align: right;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border-top-color: #0073aa;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
