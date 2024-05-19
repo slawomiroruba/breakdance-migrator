@@ -5,12 +5,61 @@
  * Version: 1.0
  * Author: Sławomir Oruba
  * Author URI: https://lunadesign.com.pl/slawomir-oruba/
+ * Text Domain: breakdance-migrator
  */
 
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
     exit;
 }
+// Check if Breakdance plugin is active
+include_once (ABSPATH . 'wp-admin/includes/plugin.php');
+
+function is_breakdance_active()
+{
+    // Additional check: search through all active plugins
+    $active_plugins = apply_filters('active_plugins', get_option('active_plugins'));
+    foreach ($active_plugins as $active_plugin) {
+        if (preg_match('/breakdance\/plugin\.php$/', $active_plugin)) {
+            error_log("Breakdance is active"); // Log that Breakdance is active
+            return true;
+        }
+    }
+
+    // If Breakdance is not active, deactivate Breakdance Migrator
+    error_log("Breakdance is not active, deactivating Breakdance Migrator");
+    deactivate_plugins(plugin_basename(__FILE__));
+    add_action('admin_notices', function () {
+        echo '<div class="notice notice-error"><p><strong>Breakdance Migrator:</strong> Breakdance plugin is not active. Breakdance Migrator has been deactivated.</p></div>';
+    });
+    return false;
+}
+
+function check_breakdance_active_on_activation()
+{
+    if (!is_breakdance_active()) {
+        wp_die('<div class="notice notice-error"><p><strong>Breakdance Migrator:</strong> Breakdance plugin is not active. Please install and activate the Breakdance plugin first.</p></div>', 'Plugin dependency check', array('back_link' => true));
+    }
+}
+
+register_activation_hook(__FILE__, 'check_breakdance_active_on_activation');
+
+if (!is_breakdance_active()) {
+    return;
+}
+
+// Deactivate Breakdance Migrator if Breakdance is deactivated
+function deactivate_breakdance_migrator_if_breakdance_deactivated($plugin, $network_deactivating)
+{
+    error_log("Deactivated plugin: $plugin"); // Log the deactivated plugin for debugging
+    if (preg_match('/breakdance\/plugin\.php$/', $plugin) && is_plugin_active('breakdance-migrator/breakdance-migrator.php')) {
+        deactivate_plugins('breakdance-migrator/breakdance-migrator.php');
+        add_action('admin_notices', function () {
+            echo '<div class="notice notice-warning"><p><strong>Breakdance Migrator:</strong> Breakdance Migrator has been deactivated because Breakdance plugin was deactivated.</p></div>';
+        });
+    }
+}
+add_action('deactivated_plugin', 'deactivate_breakdance_migrator_if_breakdance_deactivated', 10, 2);
 
 // Define constants
 define('BD_MIGRATOR_PATH', plugin_dir_path(__FILE__));
