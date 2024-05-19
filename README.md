@@ -60,13 +60,9 @@ We welcome contributions from the community to help improve Breakdance Migrator.
 4. **Documentation**: Help us improve our documentation by suggesting enhancements or adding new content.
 5. **Spread the Word**: Share Breakdance Migrator with your network and help us grow our community.
 
-### How to Make This README Awesome
 
-- **Detailed Documentation**: Provide step-by-step guides for installation, usage, and troubleshooting.
-- **Screenshots and GIFs**: Include visuals to demonstrate the plugin's features and usage.
-- **Testimonials**: Add user testimonials and case studies to highlight the plugin's benefits.
-- **Active Community**: Foster an active community by regularly engaging with users and contributors.
-- **Regular Updates**: Keep the README up-to-date with the latest features, improvements, and roadmap changes.
+or support us by buying a coffee ☕️
+<a href="https://www.buymeacoffee.com/slawomiroruba"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=slawomiroruba&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 ## License
 
