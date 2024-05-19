@@ -48,26 +48,41 @@ function export_icons_set()
  */
 function save_to_file($data)
 {
-    $upload_dir = wp_upload_dir();
     $filename = 'breakdance_data_export-' . date('Y-m-d-H-i-s') . '.json.gz';
-    $file_path = $upload_dir['basedir'] . '/breakdance_export/' . $filename;
+    // Upewnij się, że struktura katalogów istnieje
+    $upload_dir = wp_upload_dir();
+    $base_dir = $upload_dir['basedir'] . '/breakdance-migrator';
 
-    if (!file_exists($upload_dir['basedir'] . '/breakdance_export')) {
-        mkdir($upload_dir['basedir'] . '/breakdance_export', 0755, true);
+    // Tworzenie katalogu głównego 'breakdance-migrator', jeśli nie istnieje
+    if (!file_exists($base_dir)) {
+        mkdir($base_dir, 0755, true);
     }
 
+    // Tworzenie podkatalogu 'import', jeśli nie istnieje
+    $import_dir = $base_dir . '/import';
+    if (!file_exists($import_dir)) {
+        mkdir($import_dir, 0755, true);
+    }
+
+    // Tworzenie podkatalogu 'export', jeśli nie istnieje
+    $export_dir = $base_dir . '/export';
+    if (!file_exists($export_dir)) {
+        mkdir($export_dir, 0755, true);
+    }
+
+    // Ścieżka do pliku
+    $file_path = $export_dir . '/' . $filename;
     // Kompresja JSON przy użyciu gzip
     $json_data = json_encode($data);
     $gz_data = gzencode($json_data, 9); // Poziom kompresji od 0 do 9 (najwyższa)
 
     file_put_contents($file_path, $gz_data);
 
-    $file_url = $upload_dir['baseurl'] . '/breakdance_export/' . $filename;
+    $file_url = $upload_dir['baseurl'] . '/breakdance-migrator/export/' . $filename;
     $view_url = add_query_arg('json_file', $filename, home_url());
 
     echo '<p>Data exported successfully.</p>';
     echo '<p><a href="' . $file_url . '" class="button button-secondary" download>Download</a> ';
-    echo '<a href="' . $view_url . '" class="button button-primary" target="_blank">Open</a></p>';
 }
 
 /**

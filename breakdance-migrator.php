@@ -67,6 +67,7 @@ define('BD_MIGRATOR_URL', plugin_dir_url(__FILE__));
 
 // Include necessary files
 require_once BD_MIGRATOR_PATH . 'includes/export-functions.php';
+require_once BD_MIGRATOR_PATH . 'includes/import-functions.php';
 require_once BD_MIGRATOR_PATH . 'includes/display-functions.php';
 
 // Dodanie nowego linku "Migracja" do listy akcji wtyczki
@@ -98,18 +99,20 @@ function register_bd_migrator_menu_page()
     );
 }
 
-// Add styles
-// Add scripts
+// Add styles and scripts
 add_action('admin_enqueue_scripts', function () {
-    wp_enqueue_style('bd-migrator-styles', BD_MIGRATOR_URL . 'assets/css/styles.css');
-    wp_enqueue_script('bd-migrator-scripts', BD_MIGRATOR_URL . 'assets/js/script.js', array ('jquery'), null, true);
-    wp_localize_script(
-        'bd-migrator-scripts',
-        'bdMigrator',
-        array (
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('bd_migrator_nonce')
-        )
-    );
+    // Sprawdzenie, czy jesteśmy na stronie opcji Breakdance Migrator
+    if (isset ($_GET['page']) && $_GET['page'] == 'breakdance_migrator') {
+        wp_enqueue_style('bd-migrator-styles', BD_MIGRATOR_URL . 'assets/css/styles.css');
+        wp_enqueue_script('bd-migrator-scripts', BD_MIGRATOR_URL . 'assets/js/script.js', array ('jquery'), null, true);
+        wp_localize_script(
+            'bd-migrator-scripts',
+            'bdMigrator',
+            array (
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('bd_migrator_nonce')
+            )
+        );
+    }
 });
 

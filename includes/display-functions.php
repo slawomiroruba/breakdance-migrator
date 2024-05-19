@@ -7,49 +7,64 @@ if (!defined('ABSPATH')) {
 /**
  * Render HTML for the migration page
  */
-function bd_migrator_render_html() {
+function bd_migrator_render_html()
+{
     echo '<div class="wrap"><h1>Breakdance Migrator</h1>';
     ?>
-    <form method="post" class="bd-migrator-form">
-        <?php wp_nonce_field('export_breakdance_data_action', 'export_breakdance_data_nonce'); ?>
-        <table class="form-table">
-            <tr>
-                <th scope="row">
-                    <label for="export_icons">Export Icons</label>
-                </th>
-                <td>
-                    <input type="checkbox" id="export_icons" name="export_icons" value="1">
-                </td>
-            </tr>
-        </table>
-        <p class="submit">
-            <input type="submit" class="button button-primary" value="Export Data">
-        </p>
-    </form>
-    <div class="bd-migrator-result"></div>
-    <?php
-    echo '</div>';
+        <div class="bd-migrator-columns">
+            <!-- Export Section -->
+            <div class="bd-migrator-column">
+                <h2>Export Data</h2>
+                <form method="post" id="bd-migrator-form__export" class="bd-migrator-form">
+                    <?php wp_nonce_field('export_breakdance_data_action', 'export_breakdance_data_nonce'); ?>
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row">
+                                <label for="export_icons">Export Icons</label>
+                            </th>
+                            <td>
+                                <input type="checkbox" id="export_icons" name="export_icons" value="1">
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="submit">
+                        <input type="submit" class="button button-primary" value="Export Data">
+                    </p>
+                    <div class="bd-migrator-export-result"></div>
+                </form>
+            </div>
+
+            <!-- Import Section -->
+            <div class="bd-migrator-column">
+                <h2>Import Data</h2>
+                <form method="post" id="bd-migrator-form__import" class="bd-migrator-form" enctype="multipart/form-data" action="<?php echo admin_url('admin-post.php'); ?>">
+                    <?php wp_nonce_field('import_breakdance_data_action', 'import_breakdance_data_nonce'); ?>
+                    <input type="hidden" name="action" value="bd_migrator_import">
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row">
+                                <label for="import_file">Upload File</label>
+                            </th>
+                            <td>
+                                <input type="file" id="import_file" name="import_file">
+                            </td>
+                        </tr>
+                        <!-- <tr>
+        <th scope="row">
+            <label for="import_url">Or Enter File URL</label>
+        </th>
+        <td>
+            <input type="text" id="import_url" name="import_url">
+        </td>
+    </tr> -->
+                    </table>
+                    <p class="submit">
+                        <input type="submit" class="button button-secondary" value="Import Data">
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="bd-migrator-import-result"></div>
+        <?php
+        echo '</div>';
 }
-
-
-/**
- * Display JSON file with appropriate headers
- */
-function display_json_file()
-{
-    if (isset($_GET['json_file'])) {
-        $file = sanitize_text_field($_GET['json_file']);
-        $upload_dir = wp_upload_dir();
-        $file_path = $upload_dir['basedir'] . '/breakdance_export/' . $file;
-
-        if (file_exists($file_path)) {
-            header('Content-Type: application/json');
-            header('Content-Encoding: gzip');
-            echo file_get_contents($file_path);
-            exit;
-        } else {
-            wp_die('File not found.');
-        }
-    }
-}
-add_action('init', 'display_json_file');

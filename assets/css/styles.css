@@ -1,13 +1,27 @@
 .wrap {
-  max-width: 600px;
+  max-width: 500px;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.bd-migrator-form {
+h2 {
+  margin-top: 0;
+}
+
+.bd-migrator-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bd-migrator-column {
   background: #fff;
   padding: 20px;
   border: 1px solid #ccd0d4;
   border-radius: 5px;
+  flex: 1;
 }
 
 .form-table {
@@ -27,8 +41,12 @@
   border-bottom: 1px solid #ccd0d4;
 }
 
-.submit {
-  text-align: right;
+#import_url {
+  width: 100%;
+}
+
+p.submit {
+  padding: 0px;
 }
 
 .spinner {
