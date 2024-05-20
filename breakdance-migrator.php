@@ -3,6 +3,8 @@
  * Plugin Name: Breakdance Migrator
  * Description: Allows to migrate Breakdance content from staging to production site.
  * Version: 1.0
+ * License: MIT
+ * License URI: https://opensource.org/licenses/MIT
  * Author: Sławomir Oruba
  * Author URI: https://lunadesign.com.pl/slawomir-oruba/
  * Text Domain: breakdance-migrator

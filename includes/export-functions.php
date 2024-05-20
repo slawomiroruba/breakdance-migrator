@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 function export_posts()
 {
     global $wpdb;
-    $posts = $wpdb->get_results("SELECT ID, post_title, post_type, post_date, post_status FROM {$wpdb->posts} WHERE post_type LIKE '%breakdance%'");
+    $posts = $wpdb->get_results("SELECT ID, post_title, post_name, post_type, post_date, post_status FROM {$wpdb->posts} WHERE post_type LIKE '%breakdance%'");
     return $posts;
 }
 

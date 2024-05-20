@@ -16,7 +16,56 @@ function bd_migrator_handle_import()
             $uploaded_file_path = $upload_dir['path'] . '/breakdance-migrator/import/' . basename($uploaded_file['name']);
             if (move_uploaded_file($uploaded_file['tmp_name'], $uploaded_file_path)) {
                 // Process the uploaded file
-                // ...
+
+                // 0. Check if the uploaded file is a valid JSON file or archive
+                $file_extension = pathinfo($uploaded_file_path, PATHINFO_EXTENSION);
+                if (!in_array($file_extension, ['zip', 'gz', 'json'])) {
+                    wp_die('Invalid file format. Please upload a valid JSON file.');
+                }
+
+                // Jeśli plik jest archiwum, rozpakuj go
+                if ($file_extension === 'zip') {
+                    $zip = new ZipArchive();
+                    if ($zip->open($uploaded_file_path) === true) {
+                        $zip->extractTo($upload_dir['path'] . '/breakdance-migrator/import/');
+                        $zip->close();
+                        // Get the extracted file path
+                        $extracted_files = glob($upload_dir['path'] . '/breakdance-migrator/import/*');
+                        if (count($extracted_files) === 1) {
+                            $uploaded_file_path = $extracted_files[0];
+                        } else {
+                            wp_die('Invalid ZIP archive. Please upload a valid JSON file.');
+                        }
+                    } else {
+                        wp_die('Failed to extract ZIP archive.');
+                    }
+                } elseif ($file_extension === 'gz') {
+                    $json_data = gzdecode(file_get_contents($uploaded_file_path));
+                    if ($json_data === false) {
+                        wp_die('Failed to decompress GZIP archive.');
+                    }
+                    $json_file_path = $upload_dir['path'] . '/breakdance-migrator/import/' . basename($uploaded_file['name'], '.gz');
+                    file_put_contents($json_file_path, $json_data);
+                    $uploaded_file_path = $json_file_path;
+                }
+
+                // 1. Read the file contents
+                $file_contents = file_get_contents($uploaded_file_path);
+                // 2. Parse the file contents - array of data
+                $data = json_decode($file_contents, true);
+                // 3. Process the data
+                $posts = $data['posts'] ?? [];
+                /**
+                 * Process the posts data
+                 * 1. Sprawdzamy czy post o podanym ID już istnieje
+                 * 2. Jeśli nie istnieje, 
+                 *    a. tworzymy nowy post
+                 *    b. dodajemy meta dane
+                 * 3. Jeśli istnieje
+                 *    a. Sprawdzamy czy post jest tego samego typu
+                 *    b. Aktualizujemy post (tytuł, name)
+                 *    c. Aktualizujemy meta dane
+                 */
                 wp_die('File uploaded successfully.');
             } else {
                 wp_die('Failed to move uploaded file.');
